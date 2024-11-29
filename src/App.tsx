@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { Background } from './components/Background';
 import { CitySearch } from './components/CitySearch';
@@ -8,14 +8,14 @@ import { WeatherData } from './types/weather';
 import { WEATHER_API } from './config/constants';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [city, setCity] = useState(WEATHER_API.DEFAULT_CITY);
+  const [city, setCity] = useState<string>(WEATHER_API.DEFAULT_CITY);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function fetchWeather() {
+    const fetchWeather = async () => {
       try {
         setLoading(true);
         setError(null);
@@ -26,8 +26,9 @@ function App() {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
+    // Debouncing the fetchWeather function
     const debounceTimeout = setTimeout(fetchWeather, 500);
     return () => clearTimeout(debounceTimeout);
   }, [city]);
@@ -39,24 +40,24 @@ function App() {
         <Header />
         <main className="container mx-auto px-4 py-8">
           <CitySearch city={city} onCityChange={setCity} />
-          
+
           {error && (
             <div className="text-red-500 text-center mb-4">
               {error}
             </div>
           )}
-          
+
           {loading ? (
             <div className="flex items-center justify-center">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
             </div>
-          ) : weatherData && (
+          ) : weatherData ? (
             <WeatherCard weatherData={weatherData} city={city} />
-          )}
+          ) : null}
         </main>
       </div>
     </div>
   );
-}
+};
 
 export default App;
