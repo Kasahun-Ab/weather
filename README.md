@@ -1,51 +1,113 @@
-# React + TypeScript + Vite
+# Weather Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend web application designed to provide weather-related functionality. The project is built using modern technologies like **TypeScript**, **Vite**, and **Tailwind CSS** for an efficient development workflow and responsive user interface.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [License](#license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Responsive design using Tailwind CSS.
+- Fast development and build process powered by Vite.
+- TypeScript support for scalable and robust code.
+- Modular and clean codebase for easy maintainability.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## Technologies Used
+
+- **Vite**: Development build tool for lightning-fast development.
+- **Tailwind CSS**: Utility-first CSS framework for responsive and customizable designs.
+- **TypeScript**: Superset of JavaScript for strong typing and better maintainability.
+- **PostCSS**: CSS transformation tool.
+- **ESLint**: JavaScript/TypeScript linting for consistent code quality.
+
+---
+
+## Project Structure
+
+```
+project/
+├── public/                # Static assets like images, manifest files
+├── src/                   # Main application source code
+│   ├── components/        # Reusable components
+│   ├── pages/             # Application pages
+│   ├── styles/            # Global and component-specific styles
+│   └── utils/             # Utility functions
+├── index.html             # Main HTML file
+├── tailwind.config.js     # Tailwind CSS configuration
+├── vite.config.ts         # Vite build configuration
+├── tsconfig.json          # TypeScript configuration
+├── package.json           # Project dependencies and scripts
+└── README.md              # Project documentation
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Getting Started
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Prerequisites
+
+Ensure you have the following installed:
+
+- **Node.js** (v16+ recommended)
+- **npm** (or **yarn**)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd project
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+---
+
+## Scripts
+
+### Development Server
+
+Run the development server:
+
+```bash
+npm run dev
 ```
-# weather
+
+The application will be available at `http://localhost:3000`.
+
+### Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+### Linting
+
+Lint the codebase:
+
+```bash
+npm run lint
+```
+
+---
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
